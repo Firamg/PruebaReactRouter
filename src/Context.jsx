@@ -62,7 +62,7 @@ const PizzasProvider = ({ children }) => {
         if (count === 1) {
             cart.splice(i, 1)
         } else {
-            cart.count--;
+            cart[i].count--;
         }
         setCart([...cart])
     };

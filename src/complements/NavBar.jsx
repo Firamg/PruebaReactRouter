@@ -50,7 +50,7 @@ function NavBarLine() {
                         end to='/carrito'
                     >
 
-🛒 BUY
+🛒 Total:{total}
 
                     </NavLink>
 
