@@ -18,7 +18,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from 'react'
 
 //Context
-import Context from './Context'
+import {PizzasProvider} from './Context'
 
 
 
@@ -26,10 +26,17 @@ import Context from './Context'
 
 function App() {
 
-  //GET PIZZAS
+ /*  //GET PIZZAS
   const [pizzas, setPizzas] = useState([])
   const pizzaData = '/pizzas.json';
-  const sharedstate = { pizzas, setPizzas }
+  //GET CART DATA
+
+  const [cart, setCart] = useState([])
+
+  
+  const sharedstate = { pizzas, setPizzas,cart, setCart, addCart, increment,decrement }
+
+  
 
   const getPizza = async () => {
 
@@ -48,10 +55,43 @@ function App() {
 
   }, [])
 
+  //CART FUNCTION
+
+  const addCart=({id, price, name,img})=>{
+    const findProduct=cart.findIndex(({id:productId})=>productId===id);
+    const product={id,price,name,img,count:1};
+    if(findProduct>=0){
+      cart[findProduct].count++;
+      setCart([...cart]);
+
+    }else{
+      setCart([...cart,product])
+    }
+
+
+  }
+
+  const increment=(i)=>{
+    cart[i].count++;
+    setCart([...cart]);
+  }
+
+  const decrement=(i)=>{
+    const{count}=cart[i];
+    if (count===1){
+      cart.splice(i,1)
+    }else{
+      cart.count--;
+    }
+    setCart([...cart])
+  } */
+
+
+
   
 
   return (
-    <Context.Provider value={sharedstate}>
+    <PizzasProvider>
 
       <BrowserRouter>
       
@@ -67,7 +107,7 @@ function App() {
       </BrowserRouter>
 
 
-    </Context.Provider>
+    </PizzasProvider>
 
 
   );

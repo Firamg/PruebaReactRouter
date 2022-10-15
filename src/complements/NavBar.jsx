@@ -1,7 +1,19 @@
 import { NavLink } from 'react-router-dom'
 
 import { Navbar, Container } from "react-bootstrap";
+
+
+import { useContext } from "react";
+
+import Context from '../Context';
 function NavBarLine() {
+
+    const { cart } = useContext(Context);
+
+    const total = cart.reduce(
+        (valorAnterior, { count, price }) => valorAnterior + price * count,
+        0
+      );
 
     const setActive = ({ isActive }) => (isActive ? 'active' : 'noActive')
     return (

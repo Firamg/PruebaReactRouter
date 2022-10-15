@@ -7,7 +7,7 @@ import Context from '../Context'
 
 import Card from 'react-bootstrap/Card';
 
-//Gallery
+//Gallery - STYLE
 
 import './style.css'
 
@@ -20,22 +20,13 @@ import {useNavigate, Outlet, Navigate} from 'react-router-dom'
 
 function PizzaList() {
 
-    const { pizzas, setPizzas } = useContext(Context)
+    const { pizzas, setPizzas,addCart } = useContext(Context)
 
     const Navigate=useNavigate()
 
-    const [idPizza, setIdPizza] = useState([])
+    
 
-    const selectPizza=(id)=>{
-        const pizzaIndex=pizzas.findIndex((i)=>(i.id==id));
-        pizzas[pizzaIndex]=!pizzas[pizzaIndex];
-        setIdPizza([pizzas])
-
-    }
-
-    const getPizza=()=>{
-        Navigate(`/pizza/${idPizza}`)
-    }
+    
 
 
 
@@ -81,13 +72,23 @@ function PizzaList() {
 
                                     </div>
                                 </Card.Text>
+                            <div className='card gallery'>
 
-                                <button
-                                    style={{ margin: '1em' }}
-                                    onClick={selectPizza}
+                            <button
+                                     style={{ margin: '1em', height:'60%' }}
+                                    onClick={()=>Navigate(`/pizza/${item.id}`)}
                                 
                                 >Ver Más 👀</button>
-                                <button>Añadir 🛒</button>
+                                <button
+                                 style={{ margin: '1em', height:'60%' }}
+                                 onClick={() => addCart(item)}
+                                >Añadir 🛒</button>
+
+
+
+                            </div>
+
+                                
 
 
                             </Card.Body>

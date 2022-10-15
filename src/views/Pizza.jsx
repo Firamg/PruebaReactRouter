@@ -1,11 +1,13 @@
 import React from 'react'
+import PizzaCard from '../complements/PizzaCard'
 
 function Pizza() {
     return (
 
         <>
 
-            <div>Pizza</div>
+           
+            <PizzaCard/>
          
 
 
